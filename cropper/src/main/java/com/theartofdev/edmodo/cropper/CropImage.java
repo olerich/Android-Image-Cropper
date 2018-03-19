@@ -39,6 +39,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.FileProvider;
 
 import java.io.File;
 import java.io.InputStream;
@@ -342,7 +343,7 @@ public final class CropImage {
     Uri outputFileUri = null;
     File getImage = context.getExternalCacheDir();
     if (getImage != null) {
-      outputFileUri = Uri.fromFile(new File(getImage.getPath(), "pickImageResult.jpeg"));
+      outputFileUri = FileProvider.getUriForFile(context, BuildConfig.APPLICATION_ID + ".provider",  new File(getImage.getPath(), "pickImageResult.jpeg"));
     }
     return outputFileUri;
   }
